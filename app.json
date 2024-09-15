@@ -31,6 +31,18 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "013339e0-d666-40da-9f06-13d3b6201786"
+      }
+    },
+    "owner": "c-concerts",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/013339e0-d666-40da-9f06-13d3b6201786"
     }
   }
 }
