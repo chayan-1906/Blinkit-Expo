@@ -43,3 +43,6 @@
 
 ### Expo Location - https://docs.expo.dev/versions/latest/sdk/location/
     npx expo install expo-location
+
+### Dotenv - https://www.npmjs.com/package/dotenv
+    npm install dotenv --save

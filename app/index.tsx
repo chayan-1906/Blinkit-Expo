@@ -6,9 +6,11 @@ import {screenHeight, screenWidth} from "@/utils/Scaling";
 import Logo from '@/assets/images/splash_logo.jpeg';
 import {LocationType} from "@/types/index.dt";
 import {askForLocationPermission} from "@/utils/Location";
+import {useAuthStore} from "@/state/authStore";
 
 function SplashScreen() {
     let router = useRouter();
+    let {user, setUser} = useAuthStore();
 
     const [location, setLocation] = useState<LocationType | null>(null);
     const [locationError, setLocationError] = useState<string | null>(null);

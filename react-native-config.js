@@ -15,4 +15,7 @@ module.exports = {
     getSourceExts() {
         return ['ts', 'tsx'];
     },
-}
+    newArchitecture: {
+        enable: true,
+    },
+};
