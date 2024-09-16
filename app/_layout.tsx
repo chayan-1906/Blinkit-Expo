@@ -10,7 +10,7 @@ import {StatusBar} from "expo-status-bar";
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
-export default function RootLayout() {
+function RootLayout() {
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
     OkraMediumLight: require('../assets/fonts/Okra-MediumLight.ttf'),
@@ -33,9 +33,12 @@ export default function RootLayout() {
   return (
       <>
         <Stack>
-          <Stack.Screen name="index" options={{headerShown: false}}/>
+          <Stack.Screen name={'index'} options={{headerShown: false}}/>
+          <Stack.Screen name={'home'} options={{headerShown: false}}/>
         </Stack>
         <StatusBar style={'inverted'}/>
       </>
   );
 }
+
+export default RootLayout;

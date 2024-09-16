@@ -41,5 +41,5 @@
 ### Axios - https://www.npmjs.com/package/axios
     npm i axios
 
-### React Native Community Geolocation - https://www.npmjs.com/package/@react-native-community/geolocation
-    npm i @react-native-community/geolocation
+### Expo Location - https://docs.expo.dev/versions/latest/sdk/location/
+    npx expo install expo-location
