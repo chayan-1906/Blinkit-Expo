@@ -1,19 +1,32 @@
 import {SafeAreaView} from "react-native-safe-area-context";
-import {Text, TouchableOpacity} from "react-native";
+import {Image, StyleSheet} from "react-native";
 import {useRouter} from "expo-router";
-import routes from "@/constants/Routes";
+import {useEffect} from "react";
+import {screenHeight, screenWidth} from "@/utils/Scaling";
+import Logo from '@/assets/images/splash_logo.jpeg';
 
-function Index() {
+function SplashScreen() {
     let router = useRouter();
 
+    /** redirect to home after 3 sec */
+    useEffect(() => {
+        setTimeout(() => {
+            // router.push(routes.homePath);
+        }, 3000);
+    }, []);
+
     return (
-        <SafeAreaView className={'flex flex-col justify-center items-center'}>
-            <Text className={'font-bold text-red-500 text-3xl'}>Index</Text>
-            <TouchableOpacity className={'p-3 rounded-xl bg-pink-400'} onPress={() => router.push(routes.homePath)}>
-                <Text>Go to Home</Text>
-            </TouchableOpacity>
+        <SafeAreaView className={'flex flex-col flex-1 justify-center items-center bg-primary'}>
+            <Image source={Logo} className={''} resizeMode={'contain'} style={styles.logoHeight}/>
         </SafeAreaView>
     );
 }
 
-export default Index;
+export default SplashScreen;
+
+const styles = StyleSheet.create({
+    logoHeight: {
+        height: screenHeight * 0.70,
+        width: screenWidth * 0.70,
+    }
+});
