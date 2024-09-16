@@ -32,8 +32,9 @@
 ### Zustand - https://www.npmjs.com/package/zustand
     npm i zustand
 
-### React Native MMKV - https://www.npmjs.com/package/react-native-mmkv
-    npm i react-native-mmkv
+### Expo Secure Store - https://docs.expo.dev/versions/latest/sdk/securestore/
+
+    npx expo install expo-secure-store
 
 ### JWT Decode - https://www.npmjs.com/package/jwt-decode
     npm i jwt-decode
@@ -43,6 +44,3 @@
 
 ### Expo Location - https://docs.expo.dev/versions/latest/sdk/location/
     npx expo install expo-location
-
-### Dotenv - https://www.npmjs.com/package/dotenv
-    npm install dotenv --save

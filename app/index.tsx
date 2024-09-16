@@ -1,5 +1,5 @@
 import {SafeAreaView} from "react-native-safe-area-context";
-import {Alert, Image, StyleSheet, Text} from "react-native";
+import {Alert, Image, StyleSheet, Text, TouchableOpacity} from "react-native";
 import {useRouter} from "expo-router";
 import {useEffect, useState} from "react";
 import {screenHeight, screenWidth} from "@/utils/Scaling";
@@ -7,10 +7,24 @@ import Logo from '@/assets/images/splash_logo.jpeg';
 import {LocationType} from "@/types/index.dt";
 import {askForLocationPermission} from "@/utils/Location";
 import {useAuthStore} from "@/state/authStore";
+import {secureStorage} from "@/state/storage";
+import routes from "@/constants/Routes";
 
 function SplashScreen() {
-    let router = useRouter();
-    let {user, setUser} = useAuthStore();
+    const router = useRouter();
+    const {user, setUser} = useAuthStore();
+
+    const tokenCheck = async () => {
+        const accessToken = await secureStorage.getItem('accessToken');
+        const refreshToken = await secureStorage.getItem('refreshToken');
+
+        console.log('access token:', accessToken);
+        if (accessToken) {
+
+        }
+        router.replace(routes.customerLogin);
+        return false;
+    }
 
     const [location, setLocation] = useState<LocationType | null>(null);
     const [locationError, setLocationError] = useState<string | null>(null);
@@ -24,6 +38,8 @@ function SplashScreen() {
     useEffect(() => {
         if (locationError) {
             Alert.alert('Location required', 'Sorry, we need location service to give you better shopping experience');
+        } else {
+            tokenCheck();
         }
     }, [locationError]);
 
@@ -38,6 +54,9 @@ function SplashScreen() {
 
     return (
         <SafeAreaView className={'flex flex-col flex-1 justify-center items-center bg-primary'}>
+            <TouchableOpacity className={'p-3'} onPress={() => router.push(routes.deliveryPartnerLogin)}>
+                <Text className={'font-OkraExtraBold'}>Go to delivery login</Text>
+            </TouchableOpacity>
             <Image source={Logo} className={''} resizeMode={'contain'} style={styles.logoHeight}/>
             <Text>{JSON.stringify(location)}</Text>
             <Text>{JSON.stringify(locationError)}</Text>
