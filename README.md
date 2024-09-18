@@ -33,7 +33,6 @@
     npm i zustand
 
 ### Expo Secure Store - https://docs.expo.dev/versions/latest/sdk/securestore/
-
     npx expo install expo-secure-store
 
 ### JWT Decode - https://www.npmjs.com/package/jwt-decode
@@ -44,3 +43,6 @@
 
 ### Expo Location - https://docs.expo.dev/versions/latest/sdk/location/
     npx expo install expo-location
+
+### Homielab React Native Auto Scroll - https://www.npmjs.com/package/@homielab/react-native-auto-scroll
+    npm i @homielab/react-native-auto-scroll

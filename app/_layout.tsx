@@ -6,12 +6,12 @@ import 'react-native-reanimated';
 
 import {useColorScheme} from '@/hooks/useColorScheme';
 import {StatusBar} from "expo-status-bar";
+import 'react-native-gesture-handler';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
 function RootLayout() {
-  const colorScheme = useColorScheme();
   const [loaded] = useFonts({
     OkraMediumLight: require('../assets/fonts/Okra-MediumLight.ttf'),
     Okra: require('../assets/fonts/Okra-Regular.ttf'),
@@ -36,9 +36,8 @@ function RootLayout() {
           <Stack.Screen name={'index'} options={{headerShown: false}}/>
           <Stack.Screen name={'home'} options={{headerShown: false}}/>
           <Stack.Screen name={'(auth)'} options={{headerShown: false}}/>
-          {/*<Stack.Screen name={'(auth)/delivery-partner-login'} options={{headerShown: false}}/>*/}
         </Stack>
-        <StatusBar style={'inverted'}/>
+        <StatusBar style={'auto'}/>
       </>
   );
 }
