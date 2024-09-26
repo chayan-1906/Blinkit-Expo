@@ -2,7 +2,6 @@ import React from "react";
 import {Fonts} from "@/utils/Constants";
 import {TextInputProps, TextStyle} from "react-native";
 
-
 export type LocationType = {
     coords: {
         latitude: number;

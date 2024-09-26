@@ -1,9 +1,8 @@
 import {SafeAreaView} from "react-native-safe-area-context";
-import {Alert, Image, StyleSheet, Text, TouchableOpacity} from "react-native";
+import {Alert, StyleSheet} from "react-native";
 import {useRouter} from "expo-router";
 import {useEffect, useState} from "react";
 import {screenHeight, screenWidth} from "@/utils/Scaling";
-import Logo from '@/assets/images/splash_logo.jpeg';
 import {LocationType} from "@/types/index.dt";
 import {askForLocationPermission} from "@/utils/Location";
 import {useAuthStore} from "@/state/authStore";
@@ -54,12 +53,6 @@ function SplashScreen() {
 
     return (
         <SafeAreaView className={'flex flex-col flex-1 justify-center items-center bg-primary'}>
-            <TouchableOpacity className={'p-3'} onPress={() => router.push(routes.deliveryPartnerLogin)}>
-                <Text className={'font-OkraExtraBold'}>Go to delivery login</Text>
-            </TouchableOpacity>
-            <Image source={Logo} className={''} resizeMode={'contain'} style={styles.logoHeight}/>
-            <Text>{JSON.stringify(location)}</Text>
-            <Text>{JSON.stringify(locationError)}</Text>
         </SafeAreaView>
     );
 }

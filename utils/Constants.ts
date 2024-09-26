@@ -19,6 +19,7 @@ export enum Fonts {
 export const lightColors = [
     'rgba(255,255,255,1)',
     'rgba(255,255,255,0.9)',
+    'rgba(255,255,255,0.8)',
     'rgba(255,255,255,0.7)',
     'rgba(255,255,255,0.6)',
     'rgba(255,255,255,0.5)',
@@ -32,5 +33,6 @@ export const darkWeatherColors = [
     'rgba(54, 67, 92, 0.8)',
     'rgba(54, 67, 92, 0.2)',
     'rgba(54, 67, 92, 0.0)',
-
 ];
+
+export const bottomColors = [...lightColors];

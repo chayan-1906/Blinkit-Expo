@@ -25,8 +25,6 @@ export const mmkvStorage = {
 
 import * as SecureStore from 'expo-secure-store';
 
-// export const storage = secureStorage();
-
 export async function storeToken() {
     const tokenStorage = process.env.SECRET_KEY ?? '';
     await SecureStore.setItemAsync('token-storage', tokenStorage);
@@ -41,12 +39,12 @@ export async function storeStorageId() {
 export const secureStorage = {
     async getItem(key: string) {
         const value = await SecureStore.getItemAsync(key);
-        console.log('🔐 ', key, 'stored:', process.env.SECRET_KEY ?? '', '✅');
+        console.log('🔐 ', key, 'retrieved:', process.env.SECRET_KEY ?? '', '✅');
         return value;
     },
     async setItem(key: string, value: string) {
         await SecureStore.setItemAsync(key, value);
-        console.log('🔐 ', key, 'retrieved:', value, '✅');
+        console.log('🔐 ', key, 'stored:', value, '✅');
     },
     async removeItem(key: string) {
         await SecureStore.deleteItemAsync(key);

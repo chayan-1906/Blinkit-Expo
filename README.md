@@ -26,8 +26,8 @@
 ### React Native Screens - https://www.npmjs.com/package/react-native-screens
     npm i react-native-screens
 
-### React Native Linear Gradient - https://www.npmjs.com/package/react-native-linear-gradient
-    npm i react-native-linear-gradient
+### Expo Linear Gradient - https://docs.expo.dev/versions/latest/sdk/linear-gradient/
+    npx expo install expo-linear-gradient
 
 ### Zustand - https://www.npmjs.com/package/zustand
     npm i zustand
