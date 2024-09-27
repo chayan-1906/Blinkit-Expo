@@ -11,7 +11,7 @@ function BlinkitButton({title, disabled, loading, onPress}: BlinkitButtonProps) 
                 loading ? (
                     <ActivityIndicator color={'white'} size={'small'}/>
                 ) : (
-                    <BlinkitText variant={'h5'} fontFamily={Fonts.SemiBold} classes={'text-white'}>{title}</BlinkitText>
+                    <BlinkitText variant={'h4'} fontFamily={Fonts.SemiBold} classes={'text-white'}>{title}</BlinkitText>
                 )
             }
         </TouchableOpacity>

@@ -43,3 +43,7 @@ export type BlinkitButtonProps = {
     loading?: boolean,
     onPress?: () => void,
 }
+
+export type DecodedToken = {
+    exp: number,
+}

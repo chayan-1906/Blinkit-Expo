@@ -12,12 +12,14 @@ import BlinkitButton from "@/app/components/ui/BlinkitButton";
 import useKeyboardOffsetHeight from "@/utils/useKeyboardOffsetHeight";
 import {LinearGradient} from "expo-linear-gradient";
 import {customerLoginApi} from "@/service/authService";
+import {useAuthStore} from "@/state/authStore";
 
 function CustomerLogin() {
     const [gestureSequence, setGestureSequence] = useState<string[]>([]);
     const [phoneNumber, setPhoneNumber] = useState<string>('');
     const [loading, setLoading] = useState<boolean>(false);
     const router = useRouter();
+    const {setUser} = useAuthStore();
     const keyboardOffsetHeight = useKeyboardOffsetHeight();
 
     const animatedValue = useRef(new Animated.Value(0)).current;
@@ -48,19 +50,21 @@ function CustomerLogin() {
         Keyboard.dismiss();
         setLoading(true);
         try {
-            const customer = await customerLoginApi(phoneNumber);
-            console.log('customer:', customer);
-            if (customer) {
+            const loginResponse = await customerLoginApi(phoneNumber);
+            console.log('loginResponse:', loginResponse);
+            if (loginResponse?.customer) {
+                setUser(loginResponse.customer);
                 router.replace(routes.productDashboard);
             } else {
-                console.log('Error logging in ❌')
+                console.log('Error logging in ❌');
             }
         } catch (err) {
+            console.log('Inside catch of handleAuth ❌', err);
             Alert.alert('Login failed');
         } finally {
             setLoading(false);
         }
-    }, []);
+    }, [phoneNumber]);
 
     useEffect(() => {
         if (keyboardOffsetHeight === 0) {

@@ -5,6 +5,7 @@ const routes: Record<string, Href> = {
     customerLogin: '/(auth)/customer-login',
     deliveryPartnerLogin: '/(auth)/delivery-partner-login',
     productDashboard: '/dashboard/product-dashboard',
+    deliveryDashboard: '/dashboard/delivery-dashboard',
 }
 
 export default routes;
