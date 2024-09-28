@@ -46,3 +46,6 @@
 
 ### Homielab React Native Auto Scroll - https://www.npmjs.com/package/@homielab/react-native-auto-scroll
     npm i @homielab/react-native-auto-scroll
+
+### Robot3d Collapsible - https://www.npmjs.com/package/@r0b0t3d/react-native-collapsible
+    npm i @r0b0t3d/react-native-collapsible

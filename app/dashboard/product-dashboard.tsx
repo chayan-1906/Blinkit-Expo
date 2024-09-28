@@ -1,19 +1,52 @@
-import {Text, TouchableOpacity} from "react-native";
+import {Animated, Text, TouchableOpacity} from "react-native";
 import {useAuthStore} from "@/state/authStore";
-import BlinkitSafeAreaView from "@/app/components/global/BlinkitSafeAreaView";
 import {secureStorage} from "@/state/storage";
+import NoticeAnimation from "@/app/components/dashboard/NoticeAnimation";
+import {NoticeHeight} from "@/utils/Scaling";
+import {useEffect, useRef} from "react";
+import {SafeAreaView} from "react-native-safe-area-context";
+import Visuals from "@/app/components/dashboard/Visuals";
+
+const NOTICE_HEIGHT = -(NoticeHeight + 12);
 
 function ProductDashboard() {
     const {user} = useAuthStore();
 
+    const noticePosition = useRef(new Animated.Value(NOTICE_HEIGHT)).current;
+
+    const slideUp = () => {
+        Animated.timing(noticePosition, {
+            toValue: NOTICE_HEIGHT,
+            duration: 1200,
+            useNativeDriver: false,
+        }).start();
+    }
+
+    const slideDown = () => {
+        Animated.timing(noticePosition, {
+            toValue: 0,
+            duration: 1200,
+            useNativeDriver: false,
+        }).start();
+    }
+
+    useEffect(() => {
+        slideDown();
+        const timeoutId = setTimeout(() => slideUp(), 3500);
+        return () => clearTimeout(timeoutId);
+    }, []);
+
     return (
-        <BlinkitSafeAreaView className={'flex gap-4'}>
-            <Text className={'text-6xl text-red-400 font-black'}>ProductDashboard</Text>
-            <Text>{JSON.stringify(user)}</Text>
-            <TouchableOpacity className={'w-fit bg-red-500'} onPress={async () => await secureStorage.clearAll()}>
-                <Text className={'text-3xl'}>Logout</Text>
-            </TouchableOpacity>
-        </BlinkitSafeAreaView>
+        <NoticeAnimation noticePosition={noticePosition}>
+            <>
+                <Visuals/>
+                <SafeAreaView/>
+                {/*<Text className={'text-6xl text-red-400 font-black'}>ProductDashboard</Text>*/}
+                <TouchableOpacity className={'mt-20 w-fit bg-red-500'} onPress={async () => await secureStorage.clearAll()}>
+                    <Text className={'text-3xl'}>Logout</Text>
+                </TouchableOpacity>
+            </>
+        </NoticeAnimation>
     );
 }
 

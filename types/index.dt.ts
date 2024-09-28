@@ -1,4 +1,4 @@
-import React from "react";
+import React, {ReactNode} from "react";
 import {Fonts} from "@/utils/Constants";
 import {TextInputProps, TextStyle} from "react-native";
 
@@ -18,6 +18,11 @@ export type AskForLocationPermissionProps = {
     setLocation: React.Dispatch<React.SetStateAction<LocationType | null>>;
     // locationError: string | null;
     setLocationError: React.Dispatch<React.SetStateAction<string | null>>;
+}
+
+export type BlinkitSafeAreaViewProps = {
+    children: ReactNode;
+    className?: String;
 }
 
 export type BlinkitTextProps = {
@@ -46,4 +51,9 @@ export type BlinkitButtonProps = {
 
 export type DecodedToken = {
     exp: number,
+}
+
+export type NoticeAnimationProps = {
+    noticePosition: any;
+    children: React.ReactElement;
 }
