@@ -16,7 +16,6 @@ function StickySearchBar() {
         return {backgroundColor: `rgba(255, 255, 255, ${opacity})`};
     });
 
-    // @ts-ignore
     return (
         <StickyView style={[backgroundColorChanges]}>
             <SearchBar/>
@@ -31,6 +30,6 @@ export default StickySearchBar;
 
 const styles = StyleSheet.create({
     shadow: {
-        height: 25
+        height: 25,
     },
 });
