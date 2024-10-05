@@ -17,7 +17,7 @@ function NoticeAnimation({noticePosition, children}: NoticeAnimationProps) {
             <Animated.View
                 className={'flex-1 w-full'}
                 style={{
-                    paddingTop: noticePosition.interpolate({inputRange: [NOTICE_HEIGHT, 0], outputRange: [0, NOTICE_HEIGHT + 20]})
+                    paddingTop: noticePosition.interpolate({inputRange: [NOTICE_HEIGHT, 0], outputRange: [-20, NOTICE_HEIGHT + 20]})
                 }}>
                 {children}
             </Animated.View>

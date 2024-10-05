@@ -49,3 +49,6 @@
 
 ### Robot3d Collapsible - https://www.npmjs.com/package/@r0b0t3d/react-native-collapsible
     npm i @r0b0t3d/react-native-collapsible
+
+### React Native Rolling Bar - https://www.npmjs.com/package/react-native-rolling-bar
+    npm i react-native-rolling-bar

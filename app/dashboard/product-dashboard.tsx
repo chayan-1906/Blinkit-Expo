@@ -8,8 +8,9 @@ import {SafeAreaView} from "react-native-safe-area-context";
 import Visuals from "@/app/components/dashboard/Visuals";
 import {CollapsibleContainer, CollapsibleHeaderContainer, withCollapsibleContext,} from '@r0b0t3d/react-native-collapsible';
 import AnimatedHeader from "@/app/components/dashboard/AnimatedHeader";
+import StickySearchBar from "@/app/components/dashboard/StickySearchBar";
 
-const NOTICE_HEIGHT = -(NoticeHeight + 12);
+const NOTICE_HEIGHT = -(NoticeHeight + 18);
 
 function ProductDashboard() {
     const {user} = useAuthStore();
@@ -51,9 +52,10 @@ function ProductDashboard() {
                             slideDown();
                             setTimeout(() => slideUp(), 3500);
                         }}/>
+                        <StickySearchBar/>
                     </CollapsibleHeaderContainer>
                     <View>
-                        <Text>Body content</Text>
+                        {/*<Text>Body content</Text>*/}
                     </View>
                 </CollapsibleContainer>
 
