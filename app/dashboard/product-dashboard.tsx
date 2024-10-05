@@ -1,14 +1,18 @@
-import {Animated, StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import {Animated, ScrollView, View} from "react-native";
 import {useAuthStore} from "@/state/authStore";
-import {secureStorage} from "@/state/storage";
 import NoticeAnimation from "@/app/components/dashboard/NoticeAnimation";
 import {NoticeHeight} from "@/utils/Scaling";
 import {useEffect, useRef} from "react";
 import {SafeAreaView} from "react-native-safe-area-context";
-import Visuals from "@/app/components/dashboard/Visuals";
-import {CollapsibleContainer, CollapsibleHeaderContainer, withCollapsibleContext,} from '@r0b0t3d/react-native-collapsible';
+import {CollapsibleContainer, CollapsibleFlatList, CollapsibleHeaderContainer, CollapsibleScrollView, withCollapsibleContext,} from '@r0b0t3d/react-native-collapsible';
 import AnimatedHeader from "@/app/components/dashboard/AnimatedHeader";
 import StickySearchBar from "@/app/components/dashboard/StickySearchBar";
+import ContentContainer from "@/app/components/dashboard/ContentContainer";
+import BlinkitText from "@/app/components/ui/BlinkitText";
+import {RFValue} from "react-native-responsive-fontsize";
+import {Fonts} from "@/utils/Constants";
+import {data} from "@remix-run/router/utils";
+import Visuals from "@/app/components/dashboard/Visuals";
 
 const NOTICE_HEIGHT = -(NoticeHeight + 18);
 
@@ -39,39 +43,35 @@ function ProductDashboard() {
         return () => clearTimeout(timeoutId);
     }, []);
 
-    // @ts-ignore
     return (
         <NoticeAnimation noticePosition={noticePosition}>
             <>
                 <Visuals/>
-                <SafeAreaView/>
+                {/*{JSON.stringify(noticePosition) !== NOTICE_HEIGHT  && <SafeAreaView/>}*/}
+                {/*<SafeAreaView/>*/}
 
-                <CollapsibleContainer style={{flex: 1}}>
-                    <CollapsibleHeaderContainer containerStyle={styles.transparent}>
-                        <AnimatedHeader showNotice={() => {
-                            slideDown();
-                            setTimeout(() => slideUp(), 3500);
-                        }}/>
-                        <StickySearchBar/>
-                    </CollapsibleHeaderContainer>
-                    <View>
-                        {/*<Text>Body content</Text>*/}
-                    </View>
-                </CollapsibleContainer>
+                <SafeAreaView className={'flex-1'}>
+                    <CollapsibleContainer style={{flex: 1}}>
+                        <CollapsibleHeaderContainer containerStyle={{backgroundColor: 'transparent'}}>
+                            <AnimatedHeader showNotice={() => {
+                                slideDown();
+                                setTimeout(() => slideUp(), 3500);
+                            }}/>
+                            <StickySearchBar/>
+                        </CollapsibleHeaderContainer>
 
-                {/*<Text className={'text-6xl text-red-400 font-black'}>ProductDashboard</Text>*/}
-                <TouchableOpacity className={'mt-20 w-fit bg-red-500'} onPress={async () => await secureStorage.clearAll()}>
-                    <Text className={'text-3xl'}>Logout</Text>
-                </TouchableOpacity>
+                        <CollapsibleScrollView showsVerticalScrollIndicator={false} style={{flex: 1}}>
+                            <ContentContainer/>
+                            <View className={'bg-[#F8F8F8] p-5'}>
+                                <BlinkitText fontSize={RFValue(32)} fontFamily={Fonts.Bold} style={{opacity: 0.2}} numberOfLines={2}>India's last minute app 🥭</BlinkitText>
+                                <BlinkitText fontFamily={Fonts.Bold} style={{marginTop: 10, paddingBottom: 100, opacity: 0.2}} numberOfLines={2}>Developed by ❤️ Padmanabha</BlinkitText>
+                            </View>
+                        </CollapsibleScrollView>
+                    </CollapsibleContainer>
+                </SafeAreaView>
             </>
         </NoticeAnimation>
     );
 }
 
 export default withCollapsibleContext(ProductDashboard);
-
-const styles = StyleSheet.create({
-    transparent: {
-        backgroundColor: 'transparent',
-    },
-});

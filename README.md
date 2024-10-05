@@ -52,3 +52,6 @@
 
 ### React Native Rolling Bar - https://www.npmjs.com/package/react-native-rolling-bar
     npm i react-native-rolling-bar
+
+### React Native Reanimated Carousel - https://www.npmjs.com/package/react-native-reanimated-carousel
+    npm i react-native-reanimated-carousel
