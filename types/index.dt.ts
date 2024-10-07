@@ -49,6 +49,18 @@ export type BlinkitButtonProps = {
     onPress?: () => void,
 }
 
+export type BlinkitHeaderProps = {
+    title: string,
+    search?: boolean,
+}
+
+export type SidebarProps = {
+    categories: Category[];
+    selectedCategory: Category;
+    // onCategoryPress: React.Dispatch<React.SetStateAction<Category | null>>;
+    onCategoryPress: (category: Category) => void;
+}
+
 export type DecodedToken = {
     exp: number,
 }
@@ -56,4 +68,21 @@ export type DecodedToken = {
 export type NoticeAnimationProps = {
     noticePosition: any;
     children: React.ReactElement;
+}
+
+
+/** models */
+export type Category = {
+    _id: string;
+    name: string;
+    image: string;
+}
+
+export type Product = {
+    _id: string;
+    name: string;
+    image: string;
+    price: number;
+    discountPrice: number;
+    quantity: string;
 }
