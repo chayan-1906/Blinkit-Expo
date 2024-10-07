@@ -30,7 +30,7 @@ function CategoryContainer({data}) {
     return (
         <View className={'my-3'}>
             <View className={'flex flex-row justify-between items-baseline'}>{renderItems(data?.slice(0, 4))}</View>
-            {/*<View className={'flex flex-row justify-between items-baseline mb-6'}>{renderItems(data?.slice(4, 8))}</View>*/}
+            <View className={'flex flex-row justify-between items-baseline mb-6'}>{renderItems(data?.slice(4, 8))}</View>
         </View>
     );
 }
