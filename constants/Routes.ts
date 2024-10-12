@@ -7,6 +7,7 @@ const routes: Record<string, Href> = {
     productDashboard: '/dashboard/product-dashboard',
     deliveryDashboard: '/dashboard/delivery-dashboard',
     productCategories: '/dashboard/product-categories',
+    cart: '/dashboard/cart',
 }
 
 export default routes;

@@ -1,6 +1,8 @@
 import {APIs} from "@/constants/ApiEndpoints";
 import axios from "axios";
 import {Category, Product} from "@/types/index.dt";
+import equals from "@/utils/functions/equals";
+import {Alert} from "react-native";
 
 export const getAllCategoriesApi = async () => {
     try {
@@ -25,5 +27,9 @@ export const getAllProductsByCategoryIdApi = async (categoryId: string) => {
         return {category, products};
     } catch (err: any) {
         console.log('getAllProductsByCategoryIdApi ❌:', err.response?.data?.error);
+        const errorCode = err.response?.data?.error.code;
+        if (equals(errorCode, 'invalidcategoryid') || equals(errorCode, 'categorynotfound')) {
+            Alert.alert('Invalid Category', 'Failed to fetch products');
+        }
     }
 }

@@ -86,3 +86,14 @@ export type Product = {
     discountPrice: number;
     quantity: string;
 }
+
+export interface CartItem {
+    _id: string | number;
+    product: Product;
+    count: number;
+}
+
+export interface CartAnimationWrapperProps {
+    cartCount: number;
+    children: React.ReactNode;
+}

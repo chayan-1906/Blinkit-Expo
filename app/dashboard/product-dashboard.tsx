@@ -14,6 +14,7 @@ import {Fonts} from "@/utils/Constants";
 import Visuals from "@/app/components/dashboard/Visuals";
 import Icon from "react-native-vector-icons/Ionicons";
 import Animated, {useAnimatedStyle, withTiming} from "react-native-reanimated";
+import withCart from "@/app/components/cart/WithCart";
 
 const NOTICE_HEIGHT = -(NoticeHeight + 18);
 
@@ -87,7 +88,7 @@ function ProductDashboard() {
                 {/*{JSON.stringify(noticePosition) !== NOTICE_HEIGHT  && <SafeAreaView/>}*/}
                 {/*<SafeAreaView/>*/}
 
-                <Animated.View className={'absolute flex flex-row items-center gap-1 bg-black rounded-lg px-3 py-1 z-50'}
+                <Animated.View className={'absolute flex flex-row self-center items-center bg-black rounded-2xl px-3 py-2 z-50'}
                                style={[backToTopStyle, {top: Platform.OS === 'ios' ? screenHeight * 0.18 : 100}]}>
                     <TouchableOpacity onPress={() => {
                         scrollY.value = 0;
@@ -112,4 +113,4 @@ function ProductDashboard() {
     );
 }
 
-export default withCollapsibleContext(ProductDashboard);
+export default withCart(withCollapsibleContext(ProductDashboard));
