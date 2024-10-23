@@ -97,3 +97,8 @@ export interface CartAnimationWrapperProps {
     cartCount: number;
     children: React.ReactNode;
 }
+
+export interface OrderItemProps {
+    // _id: string | number;
+    item: CartItem;
+}

@@ -20,7 +20,7 @@ function CartSummary({cartCount, cartImage}: { cartCount: number, cartImage: str
                 <Icon name={'arrow-drop-up'} color={Colors.secondary} size={RFValue(25)}/>
             </View>
 
-            <TouchableOpacity className={'flex flex-row justify-center items-center px-4 py-2 rounded-md bg-secondary'} activeOpacity={0.7} onPress={() => router.push(routes.cart)}>
+            <TouchableOpacity className={'flex flex-row justify-center items-center px-4 py-2 rounded-md bg-secondary'} activeOpacity={0.7} onPress={() => router.push(routes.order)}>
                 <BlinkitText classes={'ml-1 text-white'} fontFamily={Fonts.Medium}>Next</BlinkitText>
                 <Icon name={'arrow-right'} color={'white'} size={RFValue(22)}/>
             </TouchableOpacity>
