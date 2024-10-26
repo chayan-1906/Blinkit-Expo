@@ -9,17 +9,22 @@ function OrderList() {
     const totalItems = cartItems.reduce((acc, cart) => acc + cart?.count, 0);
 
     return (
-        <View className={'bg-white rounded-md mb-4'}>
+        <View className={'bg-white rounded-md'}>
+            {/** clock & delivery in 9 minutes --> row */}
             <View className={'flex flex-row items-center gap-3 p-3'}>
+                {/** clock icon */}
                 <View className={'bg-backgroundSecondary p-3 rounded-md'}>
                     <Image source={require('@/assets/icons/clock.png')} className={'w-7 h-7'}/>
                 </View>
+
+                {/** delivery in 9 minutes */}
                 <View>
                     <BlinkitText variant={'h5'} fontFamily={Fonts.SemiBold}>Delivery in 9 minutes</BlinkitText>
                     <BlinkitText variant={'h8'} style={{opacity: 0.5}} fontFamily={Fonts.SemiBold}>Shipment of {totalItems || 0} items</BlinkitText>
                 </View>
             </View>
 
+            {/** cart items */}
             {cartItems.map((cartItem) => (
                 <OrderItem key={cartItem._id} item={cartItem}/>
             ))}
