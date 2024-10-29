@@ -1,5 +1,5 @@
 import BlinkitHeader from "@/app/components/ui/BlinkitHeader";
-import {Image, Platform, ScrollView, StyleSheet, TouchableOpacity, View} from "react-native";
+import {Alert, Image, Platform, ScrollView, StyleSheet, TouchableOpacity, View} from "react-native";
 import {Colors, Fonts} from "@/utils/Constants";
 import OrderList from "@/app/components/order/OrderList";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
@@ -10,13 +10,51 @@ import BillDetails from "@/app/components/order/BillDetails";
 import {hocStyles} from "@/styles/GlobalStyles";
 import {useAuthStore} from "@/state/authStore";
 import {SafeAreaView} from "react-native-safe-area-context";
-import {useState} from "react";
+import {useCallback, useState} from "react";
+import BlinkitArrowButton from "@/app/components/ui/BlinkitArrowButton";
+import {isEmptyTypeAnnotation} from "@babel/types";
+import {useRouter} from "expo-router";
+import routes from "@/constants/Routes";
+import {createOrderApi} from "@/service/orderService";
 
 function Order() {
     const {getTotalPrice, cart, clearCart} = useCartStore();
-    const {user} = useAuthStore();
+    const {user, currentOrder, setCurrentOrder} = useAuthStore();
 
     const [loading, setLoading] = useState(false);
+    const router = useRouter();
+
+    const handlePlaceOrder = useCallback(async () => {
+        setLoading(true);
+        /*if (currentOrder != null) {
+            Alert.alert('Let your first order to be delivered');
+            return;
+        }*/
+
+        const formattedData = cart.map((item) => ({
+            id: item._id,
+            item: item,
+            count: item.count,
+        }));
+        console.log(`cart:`, cart.length);
+        console.log(`formattedData.length:`, formattedData.length);
+
+        if (formattedData.length === 0) {
+            Alert.alert('Add at least one item to place an order');
+            return;
+        }
+
+        const data = await createOrderApi(formattedData, getTotalPrice());
+        if (data !== null) {
+            setCurrentOrder(data);
+            clearCart();
+            router.replace(routes.orderSuccess);
+        } else {
+            Alert.alert('There was an error');
+        }
+
+        setLoading(false);
+    }, [cart]);
 
     return (
         <SafeAreaView className={'flex-1 flex bg-white'}>
@@ -74,7 +112,9 @@ function Order() {
                         </View>
 
                         <View className={'w-[70%]'}>
-                            {/*<ArrowButton loading={loading} price={getTotalPrice()} title={'Place Order'} onPress={() => {}}/>*/}
+                            <BlinkitArrowButton loading={loading} price={getTotalPrice()} title={'Place Order'} onPress={async () => {
+                                await handlePlaceOrder();
+                            }}/>
                         </View>
                     </View>
                 </View>
@@ -90,6 +130,6 @@ const styles = StyleSheet.create({
         gap: 16,
         padding: 10,
         backgroundColor: Colors.backgroundSecondary,
-        paddingBottom: 70,
+        paddingBottom: 140,
     },
 });

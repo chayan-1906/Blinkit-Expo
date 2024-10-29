@@ -1,8 +1,8 @@
-import {APIs} from "@/constants/ApiEndpoints";
 import axios from "axios";
 import {Category, Product} from "@/types/index.dt";
 import equals from "@/utils/functions/equals";
 import {Alert} from "react-native";
+import {APIs} from "@/service/config";
 
 export const getAllCategoriesApi = async () => {
     try {

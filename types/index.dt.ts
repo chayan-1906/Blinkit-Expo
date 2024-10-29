@@ -54,6 +54,13 @@ export type BlinkitHeaderProps = {
     search?: boolean,
 }
 
+export type BlinkitArrowButtonProps = {
+    title: string,
+    onPress?: () => void,
+    price?: number,
+    loading?: boolean,
+}
+
 export type SidebarProps = {
     categories: Category[];
     selectedCategory: Category;

@@ -1,12 +1,11 @@
 import axios from "axios";
 import {secureStorage} from "@/state/storage";
-import {APIs} from "@/constants/ApiEndpoints";
 import {SecureStorageKeys} from "@/constants/SecureStorageKeys";
 import routes from "@/constants/Routes";
 import {router, Router} from "expo-router";
-import {appAxios} from "@/service/config";
 import equals from "@/utils/functions/equals";
 import {Alert} from "react-native";
+import {APIs, appAxios} from "@/service/config";
 
 export const customerLoginApi = async (phoneNumber: string) => {
     try {
