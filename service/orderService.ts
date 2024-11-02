@@ -1,4 +1,5 @@
-import {APIs, appAxios} from "@/service/config";
+import {appAxios} from "@/service/axiosInstance";
+import {APIs} from "@/service/constants";
 
 export const createOrderApi = async (items: any, totalPrice: number) => {
     try {
