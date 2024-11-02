@@ -14,4 +14,5 @@ export const APIs = {
         return `${BASE_URL}/products?categoryId=${categoryId}`;
     },
     createOrder: `${BASE_URL}/orders`,
+    getOrder: (orderId: string | number) => `${BASE_URL}/orders?orderId=${orderId}`,
 };

@@ -1,5 +1,6 @@
 import {APIs} from "@/service/constants";
 import {appAxios} from "@/service/config";
+import items from "ajv/lib/vocabularies/applicator/items";
 
 export const createOrderApi = async (items: any, totalPrice: number) => {
     try {
@@ -14,6 +15,19 @@ export const createOrderApi = async (items: any, totalPrice: number) => {
         return response.data.savedOrder;
     } catch (err: any) {
         console.log('createOrderApi error ❌:', err.response?.data?.error);
+        return null;
+    }
+}
+
+export const getOrderByIdApi = async (orderId: string | number) => {
+    try {
+        console.log('getOrderByIdApi called 🔑', orderId);
+        const response = await appAxios.get(APIs.getOrder(orderId)) as any;
+
+        console.log('order fetched ✅:', response, ' 🎉');
+        return response.data.order;
+    } catch (err: any) {
+        console.log('getOrderByIdApi error ❌:', err.response?.data?.error);
         return null;
     }
 }

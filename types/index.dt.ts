@@ -77,6 +77,12 @@ export type NoticeAnimationProps = {
     children: React.ReactElement;
 }
 
+export type LiveHeaderProps = {
+    type: 'Customer' | 'Delivery';
+    title: string;
+    description: string
+}
+
 
 /** models */
 export type Category = {
