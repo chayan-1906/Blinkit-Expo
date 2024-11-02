@@ -20,7 +20,7 @@ function Header({showNotice}: { showNotice: () => void }) {
                 </View>
 
                 <View className={'flex flex-row items-center gap-2'}>
-                    <BlinkitText variant={'h8'} numberOfLines={1} fontFamily={Fonts.Medium} classes={'text-white'}>{user?.address || 'Knowhere, Somewhere 😅'}</BlinkitText>
+                    <BlinkitText variant={'h8'} numberOfLines={1} fontFamily={Fonts.Medium} classes={'text-white'}>{user?.address || 'Nowhere, Somewhere 😅'}</BlinkitText>
                     <Icon name={'menu-down'} color={'white'} size={RFValue(20)} className={''}/>
                 </View>
             </TouchableOpacity>

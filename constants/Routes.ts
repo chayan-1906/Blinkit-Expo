@@ -10,6 +10,7 @@ const routes: Record<string, Href> = {
     cart: '/dashboard/cart',
     order: '/dashboard/order',
     orderSuccess: '/dashboard/order-success',
+    liveTracking: '/dashboard/live-tracking',
 }
 
 export default routes;

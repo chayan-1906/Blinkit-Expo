@@ -1,9 +1,13 @@
-import {appAxios} from "@/service/axiosInstance";
 import {secureStorage} from "@/state/storage";
 import {SecureStorageKeys} from "@/constants/SecureStorageKeys";
 import {refreshTokenApi} from "@/service/authService";
 import {Alert} from "react-native";
 import axios from "axios";
+import {BASE_URL} from "@/service/constants";
+
+export const appAxios = axios.create({
+    baseURL: BASE_URL,
+});
 
 if (appAxios) {
     appAxios.interceptors.request.use(async config => {
